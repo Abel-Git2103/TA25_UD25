@@ -1,7 +1,6 @@
 package mainAPP.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,10 +10,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import mainAPP.dto.Articulo;
 import mainAPP.service.ArticuloServiceImpl;
-
 
 @RestController
 @RequestMapping("/api")
@@ -36,11 +33,9 @@ public class ArticuloController {
 		
 	@PostMapping("/articulos")
 	public Articulo salvarArticulo(@RequestBody Articulo articulo) {
-		
 		return articuloServiceImpl.guardarArticulo(articulo);
 	}
-	
-	
+		
 	@GetMapping("/articulos/{codigo}")
 	public Articulo empleadoXID(@PathVariable(name="codigo") Long codigo) {
 		
@@ -63,9 +58,7 @@ public class ArticuloController {
 		
 		articulo_seleccionado.setNombre(articulo.getNombre());
 		articulo_seleccionado.setPrecio(articulo.getPrecio());
-		articulo_seleccionado.setFabricante(articulo.getFabricante());
 
-		
 		articulo_actualizado = articuloServiceImpl.actualizarArticulo(articulo_seleccionado);
 		
 		System.out.println("El articulo actualizado es: "+ articulo_actualizado);
@@ -73,10 +66,9 @@ public class ArticuloController {
 		return articulo_actualizado;
 	}
 	
-	@DeleteMapping("/articulos/{id}")
-	public void eliminarArticulo(@PathVariable(name="codiggo")Long codigo) {
+	@DeleteMapping("/articulos/{codigo}")
+	public void eliminarArticulo(@PathVariable(name="codigo")Long codigo) {
 		articuloServiceImpl.eliminarArticulo(codigo);
 	}
-	
 	
 }

@@ -2,16 +2,16 @@ DROP table IF EXISTS articulo;
 DROP table IF EXISTS fabricante;
 
 create table fabricante(
-	codigo int auto_increment primary key,
-    nombre varchar(250)
+	codigo int not null auto_increment primary key,
+    nombre varchar(250) default null
     );
     
 create table articulo(
-    codigo int auto_increment primary key,
-    nombre varchar(250),
-    precio int,
-    fabricante int,
-    foreign key (fabricante) references fabricante (codigo)
+    codigo int not null auto_increment primary key,
+    nombre varchar(250) default null,
+    precio int default null,
+    fabricante int default null,
+    foreign key (fabricante) references fabricante (codigo) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 insert into fabricante (nombre)values('DELL');

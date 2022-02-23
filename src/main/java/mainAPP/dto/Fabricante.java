@@ -1,44 +1,39 @@
 package mainAPP.dto;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "articulo")
-public class Articulo {
+@Table(name = "fabricante")
+public class Fabricante {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	private String nombre;
-	private int precio;
 
-	@ManyToOne
-	@JoinColumn(name = "fabricante")
-	private Fabricante fabricante;
-
+    @OneToMany
+    @JoinColumn(name="codigo")
+    private List<Articulo> articulo;
+    
 	// CONSTRUCTORES
-	public Articulo() {
+	public Fabricante() {
 	}
 
 	/**
 	 * @param codigo
 	 * @param nombre
-	 * @param precio
-	 * @param fabricante
 	 */
-	
-	public Articulo(Long codigo, String nombre, int precio, Fabricante fabricante) {
-		
+
+	public Fabricante(Long codigo, String nombre) {
 		this.codigo = codigo;
 		this.nombre = nombre;
-		this.precio = precio;
-		this.fabricante = fabricante;
 	}
 
 	// GETTERS Y SETTERS
@@ -57,27 +52,11 @@ public class Articulo {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public int getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(int precio) {
-		this.precio = precio;
-	}
-
-	public Fabricante getFabricante() {
-		return fabricante;
-	}
-
-	public void setFabricante(Fabricante fabricante) {
-		this.fabricante = fabricante;
-	}
-
+	
 	// METODO TO STRING
 	@Override
 	public String toString() {
-		return "Articulo [codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio + ", fabricante=" + fabricante
-				+ "]";
+		return "Fabricante [codigo=" + codigo + ", nombre=" + nombre + "]";
 	}
+
 }
