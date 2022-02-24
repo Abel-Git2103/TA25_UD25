@@ -34,7 +34,6 @@ public class Articulo {
 	 */
 	
 	public Articulo(Long codigo, String nombre, int precio, Fabricante fabricante) {
-		
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.precio = precio;

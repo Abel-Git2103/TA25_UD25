@@ -58,6 +58,7 @@ public class ArticuloController {
 		
 		articulo_seleccionado.setNombre(articulo.getNombre());
 		articulo_seleccionado.setPrecio(articulo.getPrecio());
+		articulo_seleccionado.setFabricante(articulo.getFabricante());
 
 		articulo_actualizado = articuloServiceImpl.actualizarArticulo(articulo_seleccionado);
 		
